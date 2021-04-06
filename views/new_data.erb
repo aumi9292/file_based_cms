@@ -1,0 +1,9 @@
+<% if session[:error] %>
+  <div id="error" class="msg"><%= session.delete(:error) %></div>
+<% end %>
+
+<label for="new_file">Add a new document</label>
+<form method="post" action="/new">
+  <input name="new_data"></input>
+  <input type="submit" value="Create" >
+</form>

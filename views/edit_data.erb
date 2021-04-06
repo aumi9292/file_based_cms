@@ -1,0 +1,11 @@
+<form action="/<%= @file %>/edit" method="post">
+  <h2><label for="edit_file">Editing <em><%= @file %></em>:</label></h2>
+  <br/>
+  <textarea id="edit_file" name="edit_file" rows="30" cols="150">
+<%= @txt_arr.join %></textarea>
+  <br/> 
+  <input type="submit" value="Save changes"> 
+  <form action="/" method="get">
+    <input name="cancel" type="submit" value="Cancel">
+  </form>
+</form>

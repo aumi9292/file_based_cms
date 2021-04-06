@@ -1,0 +1,30 @@
+<% if session[:error] %>
+  <div id="error" class="msg"><%= session.delete(:error) %></div>
+<% elsif session[:success] %>
+  <div id="success" class="msg"><%= session.delete(:success) %></div>
+<% end %>
+
+<h1>Your Content Management System</h1>
+
+<div class="header-nav"><a href="/new">New Document</a></div>
+<ul>
+  <% @files.sort.each do |fl| %>
+    <li>
+      <%= "<a href=/#{fl}> #{fl} </a>" %>
+      <a href=/<%= fl %>/edit>Edit</a>
+      <form class="inline" action="/delete" method="post">
+      <input type="hidden" name="delete_data" value=<%= fl %> />
+      <input type="submit" value="Delete">
+      </form>
+    </li>
+    <% end %>
+</ul>
+
+<% if session[:user] %>
+  <%= "<p>Signed in as #{session[:user]}</p>" %>
+  <form name="signout" action="/users/signout" method="post" name="username" value="<%= @username %>">
+    <input type="submit"   value="Sign out"/>
+  </form>
+<% else %>
+    <a href="/users/signin">Sign in</a>
+<% end %>
